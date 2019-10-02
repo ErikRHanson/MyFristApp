@@ -34,11 +34,28 @@ pipeline {
 
         stage('Results') {
             steps {
-                sh 'echo "No testing means no results. Just running the deployment"'
+                sh 'echo "Need to figure out how to publish test results for Docker builds"'
             }
         }
 
-        stage('Publishing'){
+        stage('Publishing QA'){
+            
+            when {
+                branch 'qa'
+            }
+
+            steps {
+                print "DEBUG: Begin Publishing Step"
+                print "DEBUG: End Publishing Step"
+            }
+        }
+
+        stage('Publishing Production'){
+            
+            when {
+                branch 'master'
+            }
+
             steps {
                 print "DEBUG: Begin Publishing Step"
                 print "DEBUG: End Publishing Step"
